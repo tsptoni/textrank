@@ -12,6 +12,7 @@ Features
 * Text summarization
 * Keyword extraction
 * Text modeling with graph and gexf exportation
+* Working on Python3
 
 Examples
 --------
