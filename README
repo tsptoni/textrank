@@ -1,6 +1,6 @@
-================
-summa - textrank
-================
+=================
+summa - textrank3
+=================
 
 TextRank_ implementation for text summarization and keyword extraction in Python. An online version can be tested `here <http://104.131.76.203>`_.
 
@@ -28,7 +28,7 @@ Text summarization::
     is search engines such as Google. Document summarization is another."""
 
     >>> from summa import summarizer
-    >>> print summarizer.summarize(text)
+    >>> print(summarizer.summarize(text))
     'Automatic summarization is the process of reducing a text document with a computer
     program in order to create a summary that retains the most important points of the
     original document.'
@@ -37,7 +37,7 @@ Text summarization::
 Keyword extraction::
 
     >>> from summa import keywords
-    >>> print keywords.keywords(text)
+    >>> print(keywords.keywords(text))
     document
     automatic summarization
     technologies
