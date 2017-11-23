@@ -1,5 +1,5 @@
 =================
-summa - textrank3
+textrank3 - textrank3
 =================
 
 TextRank_ implementation for text summarization and keyword extraction in Python. An online version can be tested `here <http://104.131.76.203>`_.
@@ -27,7 +27,7 @@ Text summarization::
     length, writing style and syntax. An example of the use of summarization technology
     is search engines such as Google. Document summarization is another."""
 
-    >>> from summa import summarizer
+    >>> from textrank3 import summarizer
     >>> print(summarizer.summarize(text))
     'Automatic summarization is the process of reducing a text document with a computer
     program in order to create a summary that retains the most important points of the
@@ -36,7 +36,7 @@ Text summarization::
 
 Keyword extraction::
 
-    >>> from summa import keywords
+    >>> from textrank3 import keywords
     >>> print(keywords.keywords(text))
     document
     automatic summarization
@@ -48,9 +48,9 @@ Installation
 ------------
 
 This software depends on `NumPy and Scipy <http://www.scipy.org/Download>`_, two Python packages for scientific computing.
-You must have them installed prior to installing `summa`::
+You must have them installed prior to installing `textrank3`::
 
-    pip install summa
+    pip install textrank3
 
 
 If you are going to use the export function, you also need `NetworkX <https://networkx.github.io/download.html>`_.
@@ -64,18 +64,18 @@ More examples
 
 - Command-line usage::
 
-    cd path/to/folder/summa/
+    cd path/to/folder/textrank3/
     python textrank.py -t FILE
 
 
 - Export::
 
-    >>> from summa.export import gexf_export
+    >>> from textrank3.export import gexf_export
     >>> gexf_export(text, path="graph.gexf")
 
 - Define length of the summary as a proportion of the text (also available in :code:`keywords`)::
 
-    >>> from summa.summarizer import summarize
+    >>> from textrank3.summarizer import summarize
     >>> summarize(text, ratio=0.2)
 
 - Define length of the summary by aproximate number of words (also available in :code:`keywords`)::
