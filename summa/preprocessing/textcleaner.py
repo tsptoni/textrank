@@ -13,8 +13,8 @@ except ImportError:
     logger.info("'pattern' package not found; tag filters are not available for English")
     HAS_PATTERN = False
 
-from snowball import SnowballStemmer
-from stopwords import get_stopwords_by_language
+from .snowball import SnowballStemmer
+from .stopwords import get_stopwords_by_language
 import re  # http://regex101.com/#python to test regex
 from summa.syntactic_unit import SyntacticUnit
 
@@ -91,14 +91,14 @@ def to_unicode(text, encoding='utf8', errors='strict'):
 # Taken from gensim
 RE_PUNCT = re.compile('([%s])+' % re.escape(string.punctuation), re.UNICODE)
 def strip_punctuation(s):
-    s = to_unicode(s)
+    #s = to_unicode(s)
     return RE_PUNCT.sub(" ", s)
 
 
 # Taken from gensim
 RE_NUMERIC = re.compile(r"[0-9]+", re.UNICODE)
 def strip_numeric(s):
-    s = to_unicode(s)
+    #s = to_unicode(s)
     return RE_NUMERIC.sub("", s)
 
 
@@ -123,12 +123,13 @@ def filter_words(sentences):
     # filters = []
 
     apply_filters_to_token = lambda token: apply_filters(token, filters)
-    return map(apply_filters_to_token, sentences)
+    return list(map(apply_filters_to_token, sentences))
 
 
 # Taken from six
 def u(s):
-    return unicode(s.replace(r'\\', r'\\\\'), "unicode_escape")
+    # return unicode(s.replace(r'\\', r'\\\\'), "unicode_escape")
+    return s.replace(r'\\', r'\\\\')
 
 
 # Taken from gensim
@@ -137,9 +138,9 @@ def deaccent(text):
     Remove accentuation from the given string. Input text is either a unicode string or utf8
     encoded bytestring.
     """
-    if not isinstance(text, unicode):
-        # assume utf8 for byte strings, use default (strict) error handling
-        text = text.decode('utf8')
+    # if not isinstance(text, unicode):
+    #     # assume utf8 for byte strings, use default (strict) error handling
+    #     text = text.decode('utf8')
     norm = unicodedata.normalize("NFD", text)
     result = u('').join(ch for ch in norm if unicodedata.category(ch) != 'Mn')
     return unicodedata.normalize("NFC", result)
@@ -153,7 +154,7 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
     and removing accent marks.
     """
     lowercase = lowercase or to_lower or lower
-    text = to_unicode(text, errors=errors)
+    #text = to_unicode(text, errors=errors)
     if lowercase:
         text = text.lower()
     if deacc:
@@ -164,7 +165,7 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
 
 def merge_syntactic_units(original_units, filtered_units, tags=None):
     units = []
-    for i in xrange(len(original_units)):
+    for i in range(len(original_units)):
         if filtered_units[i] == '':
             continue
 

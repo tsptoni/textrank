@@ -1,5 +1,5 @@
 
-from graph import Graph
+from .graph import Graph
 
 
 def build_graph(sequence):

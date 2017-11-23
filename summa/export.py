@@ -2,11 +2,11 @@
 import networkx as _nx
 from networkx.drawing.nx_agraph import graphviz_layout
 from os import system as _shell
-from summarizer import get_graph as _get_sentence_graph
-from keywords import get_graph as _get_word_graph
-from pagerank_weighted import pagerank_weighted_scipy as _pagerank_weighted_scipy
-from preprocessing.textcleaner import clean_text_by_sentences as _clean_text_by_sentences
-from preprocessing.textcleaner import clean_text_by_word as _clean_text_by_word
+from .summarizer import get_graph as _get_sentence_graph
+from .keywords import get_graph as _get_word_graph
+from .pagerank_weighted import pagerank_weighted_scipy as _pagerank_weighted_scipy
+from .preprocessing.textcleaner import clean_text_by_sentences as _clean_text_by_sentences
+from .preprocessing.textcleaner import clean_text_by_word as _clean_text_by_word
 
 NODE_COLOR = {'r': 239, 'g': 10, 'b': 10}
 
@@ -55,7 +55,7 @@ def _center_positions(positions):
     delta_y = (min_y + max_y) / 2
 
     centered_positions = {}
-    for key, position in positions.iteritems():
+    for key, position in positions.items():
         new_position = (round(position[0] - delta_x, 2), round(position[1] - delta_y, 2))
         centered_positions[key] = new_position
     return centered_positions
