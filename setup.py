@@ -11,7 +11,7 @@ setup(
         'scipy',
         'networkx',
     ],
-    version = '0.0.7',
+    version = '0.0.8',
     description = 'A text summarization and keyword extraction package',
     author = 'Federico Barrios, Federico Lopez, Antonio Sanchez Pineda',
     author_email = 'antonio@byhs.eu',

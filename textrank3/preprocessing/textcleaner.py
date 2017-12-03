@@ -37,8 +37,8 @@ STOPWORDS = None
 def set_stemmer_language(language):
     global STEMMER
     if not language in LANGUAGES:
-        raise ValueError("Valid languages are danish, dutch, english, finnish," +
-                 " french, german, hungarian, italian, norwegian, porter, portuguese," +
+        raise ValueError("Valid languages are: danish, dutch, english, finnish, " +
+                 "french, german, hungarian, italian, norwegian, porter, portuguese, " +
                  "romanian, russian, spanish, swedish")
     STEMMER = SnowballStemmer(language)
 

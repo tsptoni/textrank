@@ -1,6 +1,9 @@
 # encoding: UTF-8
 
 import json
+import os.path
+
+base_path = os.path.dirname(__file__)
 
 english = """
 all six eleven just less being indeed over both anyway detail four front already through yourselves fify
@@ -196,25 +199,27 @@ vähemmän vähintään vähiten vähän välillä yhdeksän yhden yhdessä yhte
 yhtäällä yhtäältä yhtään yhä yksi yksin yksittäin yleensä ylemmäs yli ylös ympäri älköön älä
 """
 
-def plain_stopwords(json):
-    data = json.load(open(json))
+def plain_stopwords(json_filename):
+    json_file = os.path.abspath(os.path.join(base_path, 'languages', json_filename))
+    data = json.load(open(json_file))
     return ' '.join(data)
 
+
 LANGUAGES = {
-    "english": 'languages/stopwords-en',
-    "german": 'languages/stopwords-de',
-    "spanish": 'languages/stopwords-es',
-    "french": 'languages/stopwords-fr',
-    "italian": 'languages/stopwords-it',
-    "portuguese": 'languages/stopwords-pt',
-    "russian": 'languages/stopwords-ru',
-    "danish": 'languages/stopwords-da',
-    "dutch": 'languages/stopwords-nl',
-    "finnish": 'languages/stopwords-fi',
-    "norwegian": 'languages/stopwords-no',
-    "hungarian": 'languages/stopwords-hu',
-    "romanian": 'languages/stopwords-ro',
-    "swedish": 'languages/stopwords-sv',
+    "english": 'stopwords-en.json',
+    "german": 'stopwords-de.json',
+    "spanish": 'stopwords-es.json',
+    "french": 'stopwords-fr.json',
+    "italian": 'stopwords-it.json',
+    "portuguese": 'stopwords-pt.json',
+    "russian": 'stopwords-ru.json',
+    "danish": 'stopwords-da.json',
+    "dutch": 'stopwords-nl.json',
+    "finnish": 'stopwords-fi.json',
+    "norwegian": 'stopwords-no.json',
+    "hungarian": 'stopwords-hu.json',
+    "romanian": 'stopwords-ro.json',
+    "swedish": 'stopwords-sv.json',
 }
 
 
