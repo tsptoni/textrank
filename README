@@ -56,7 +56,7 @@ You must have them installed prior to installing `textrank3`::
 If you are going to use the export function, you also need `NetworkX <https://networkx.github.io/download.html>`_.
 For a better performance of keyword extraction, install `Pattern <http://www.clips.ua.ac.be/pattern>`_
 
-This version has been tested under Python 2.7
+This version has been tested under Python 3.6
 
 
 More examples

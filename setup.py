@@ -7,7 +7,11 @@ setup(
     package_data = {
         'summa': ['README', 'LICENSE']
     },
-    version = '0.0.4',
+    install_requires=[
+        'scipy',
+        'networkx',
+    ],
+    version = '0.0.5',
     description = 'A text summarization and keyword extraction package',
     author = 'Federico Barrios, Federico Lopez, Antonio Sanchez Pineda',
     author_email = 'summanlp@gmail.com',
