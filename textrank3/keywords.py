@@ -156,7 +156,7 @@ def _get_combined_keywords(_keywords, split_text):
                 if other_word in _keywords and other_word == split_text[j]:
                     combined_word.append(other_word)
                 else:
-                    for keyword in combined_word: _keywords.pop(keyword)
+                    for keyword in combined_word: _keywords.pop(keyword, None)
                     result.append(" ".join(combined_word))
                     break
     return result
@@ -207,6 +207,7 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
     extracted_lemmas = _extract_tokens(graph.nodes(), pagerank_scores, ratio, words)
 
     lemmas_to_word = _lemmas_to_words(tokens)
+
     keywords = _get_keywords_with_score(extracted_lemmas, lemmas_to_word)
 
     # text.split() to keep numbers and punctuation marks, so separeted concepts are not combined
