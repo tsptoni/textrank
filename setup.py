@@ -14,7 +14,7 @@ setup(
     version = '0.0.5',
     description = 'A text summarization and keyword extraction package',
     author = 'Federico Barrios, Federico Lopez, Antonio Sanchez Pineda',
-    author_email = 'summanlp@gmail.com',
+    author_email = 'antonio@byhs.eu',
     url = 'https://github.com/tsptoni/textrank3',
     download_url = 'https://github.com/tsptoni/textrank3',
     keywords = ['summa', 'nlp', 'summarization', "NLP", "natural language processing", "automatic summarization",

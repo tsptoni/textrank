@@ -99,5 +99,10 @@ The available languages are "danish", "dutch", "english", "finnish", "french", "
 
 -------------
 
+TextRank3 support for Python3 is maintained by Antonio Sánchez Pineda. The project was forked from summanlp/textrank.
+
+Support for new languages and updates to stop words are incoming.
+
+
 Summa is open source software released under the `The MIT License (MIT) <http://opensource.org/licenses/MIT>`_.
 Copyright (c) 2014 - now Summa NLP
