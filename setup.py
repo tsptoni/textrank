@@ -5,13 +5,14 @@ setup(
     name = 'textrank3',
     packages = ['textrank3', 'textrank3.preprocessing', 'textrank3.preprocessing.languages'],
     package_data = {
-        'summa': ['README', 'LICENSE']
+        'textrank3': ['README', 'LICENSE'],
+        'textrank3.preprocessing.languages': ['*.json',]
     },
     install_requires=[
         'scipy',
         'networkx',
     ],
-    version = '0.0.10',
+    version = '0.0.11',
     description = 'A text summarization and keyword extraction package',
     author = 'Federico Barrios, Federico Lopez, Antonio Sanchez Pineda',
     author_email = 'antonio@byhs.eu',

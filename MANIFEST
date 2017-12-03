@@ -17,3 +17,4 @@ textrank3/preprocessing/porter.py
 textrank3/preprocessing/snowball.py
 textrank3/preprocessing/stopwords.py
 textrank3/preprocessing/textcleaner.py
+textrank3/preprocessing/languages/*
