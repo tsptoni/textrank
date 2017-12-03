@@ -3,7 +3,7 @@ from distutils.core import setup
 # and https://github.com/pypa/sampleproject/blob/master/setup.py
 setup(
     name = 'textrank3',
-    packages = ['textrank3', 'textrank3.preprocessing'],
+    packages = ['textrank3', 'textrank3.preprocessing', 'textrank3.preprocessing.languages'],
     package_data = {
         'summa': ['README', 'LICENSE']
     },
@@ -11,7 +11,7 @@ setup(
         'scipy',
         'networkx',
     ],
-    version = '0.0.9',
+    version = '0.0.10',
     description = 'A text summarization and keyword extraction package',
     author = 'Federico Barrios, Federico Lopez, Antonio Sanchez Pineda',
     author_email = 'antonio@byhs.eu',
