@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+import json
+
 english = """
 all six eleven just less being indeed over both anyway detail four front already through yourselves fify
 mill still its before move whose one system also somewhere herself thick show had enough should to only
@@ -102,9 +104,122 @@ tem temos tém tinha tínhamos tinham tive teve tivemos tiveram tivera tivéramo
 tivéssemos tivessem tiver tivermos tiverem terei terá teremos terão teria teríamos teriam
 """
 
-LANGUAGES = {"english": english, "german": german, "spanish": spanish, "portuguese": portuguese}
+danish = """
+ad af aldrig alle alt anden andet andre at bare begge blev blive bliver da de dem den denne der deres det dette
+dig din dine disse dit dog du efter ej eller en end ene eneste enhver er et far fem fik fire flere fleste for fordi
+forrige fra få får før god godt ham han hans har havde have hej helt hende hendes her hos hun hvad hvem hver hvilken
+hvis hvor hvordan hvorfor hvornår i ikke ind ingen intet ja jeg jer jeres jo kan kom komme kommer kun kunne lad lav
+lidt lige lille man mand mange med meget men mens mere mig min mine mit mod må ned nej ni nogen noget nogle nu ny nyt
+når nær næste næsten og også okay om op os otte over på se seks selv ser ses sig sige sin sine sit skal skulle som
+stor store syv så sådan tag tage thi ti til to tre ud under var ved vi vil ville vor vores være været
+"""
+
+dutch = """
+aan aangaande aangezien achte achter achterna af afgelopen al aldaar aldus alhoewel alias alle allebei alleen alles
+als alsnog altijd altoos ander andere anders anderszins beetje behalve behoudens beide beiden ben beneden bent bepaald
+betreffende bij bijna bijv binnen binnenin blijkbaar blijken boven bovenal bovendien bovengenoemd bovenstaand
+bovenvermeld buiten bv daar daardoor daarheen daarin daarna daarnet daarom daarop daaruit daarvanlangs dan dat de
+deden deed der derde derhalve dertig deze dhr die dikwijls dit doch doe doen doet door doorgaand drie duizend dus
+echter een eens eer eerdat eerder eerlang eerst eerste eigen eigenlijk elk elke en enig enige enigszins enkel er
+erdoor erg ergens etc etcetera even eveneens evenwel gauw ge gedurende geen gehad gekund geleden gelijk gemoeten
+gemogen genoeg geweest gewoon gewoonweg haar haarzelf had hadden hare heb hebben hebt hedden heeft heel hem hemzelf
+hen het hetzelfde hier hierbeneden hierboven hierin hierna hierom hij hijzelf hoe hoewel honderd hun hunne ieder iedere
+iedereen iemand iets ik ikzelf in inderdaad inmiddels intussen inzake is ja je jezelf jij jijzelf jou jouw jouwe juist
+jullie kan klaar kon konden krachtens kun kunnen kunt laatst later liever lijken lijkt maak maakt maakte maakten maar
+mag maken me meer meest meestal men met mevr mezelf mij mijn mijnent mijner mijzelf minder miss misschien missen mits
+mocht mochten moest moesten moet moeten mogen mr mrs mw na naar nadat nam namelijk nee neem negen nemen nergens net
+niemand niet niets niks noch nochtans nog nogal nooit nu nv of ofschoon om omdat omhoog omlaag omstreeks omtrent omver
+ondanks onder ondertussen ongeveer ons onszelf onze onzeker ooit ook op opnieuw opzij over overal overeind overige
+overigens paar pas per precies recent redelijk reeds rond rondom samen sedert sinds sindsdien slechts sommige spoedig
+steeds tamelijk te tegen tegenover tenzij terwijl thans tien tiende tijdens tja toch toe toen toenmaals toenmalig tot
+totdat tussen twee tweede u uit uitgezonderd uw vaak vaakwat van vanaf vandaan vanuit vanwege veel veeleer veertig
+verder verscheidene verschillende vervolgens via vier vierde vijf vijfde vijftig vol volgend volgens voor vooraf
+vooral vooralsnog voorbij voordat voordezen voordien voorheen voorop voorts vooruit vrij vroeg waar waarom
+waarschijnlijk wanneer want waren was wat we wederom weer weg wegens weinig wel weldra welk welke werd werden werder
+wezen whatever wie wiens wier wij wijzelf wil wilden willen word worden wordt zal ze zei zeker zelf zelfde zelfs zes
+zeven zich zichzelf zij zijn zijne zijzelf zo zoals zodat zodra zonder zou zouden zowat zulk zulke zullen zult
+"""
+
+finnish = """
+aiemmin aika aikaa aikaan aikaisemmin aikaisin aikajen aikana aikoina aikoo aikovat aina ainakaan ainakin ainoa
+ainoat aiomme aion aiotte aist aivan ajan alas alemmas alkuisin alkuun alla alle aloitamme aloitan aloitat aloitatte
+aloitattivat aloitettava aloitettevaksi aloitettu aloitimme aloitin aloitit aloititte aloittaa aloittamatta aloitti
+aloittivat alta aluksi alussa alusta annettavaksi annetteva annettu ansiosta antaa antamatta antoi aoua apu asia asiaa
+asian asiasta asiat asioiden asioihin asioita asti avuksi avulla avun avutta edelle edelleen edellä edeltä edemmäs edes
+edessä edestä ehkä ei eikä eilen eivät eli ellei elleivät ellemme ellen ellet ellette emme en enemmän eniten ennen ensi
+ensimmäinen ensimmäiseksi ensimmäisen ensimmäisenä ensimmäiset ensimmäisiksi ensimmäisinä ensimmäisiä ensimmäistä ensin
+entinen entisen entisiä entisten entistä enää eri erittäin erityisesti eräiden eräs eräät esi esiin esillä esimerkiksi
+et eteen etenkin etessa ette ettei että haikki halua haluaa haluamatta haluamme haluan haluat haluatte haluavat halunnut
+halusi halusimme halusin halusit halusitte halusivat halutessa haluton he hei heidän heidät heihin heille heillä heiltä
+heissä heistä heitä helposti heti hetkellä hieman hitaasti hoikein huolimatta huomenna hyvien hyviin hyviksi hyville
+hyviltä hyvin hyvinä hyvissä hyvistä hyviä hyvä hyvät hyvää hän häneen hänelle hänellä häneltä hänen hänessä hänestä
+hänet häntä ihan ilman ilmeisesti itse itsensä itseään ja jo johon joiden joihin joiksi joilla joille joilta joina
+joissa joista joita joka jokainen jokin joko joksi joku jolla jolle jolloin jolta jompikumpi jona jonka jonkin jonne
+joo jopa jos joskus jossa josta jota jotain joten jotenkin jotenkuten jotka jotta jouduimme jouduin jouduit jouduitte
+joudumme joudun joudutte joukkoon joukossa joukosta joutua joutui joutuivat joutumaan joutuu joutuvat juuri jälkeen
+jälleen jää kahdeksan kahdeksannen kahdella kahdelle kahdelta kahden kahdessa kahdesta kahta kahteen kai kaiken
+kaikille kaikilta kaikkea kaikki kaikkia kaikkiaan kaikkialla kaikkialle kaikkialta kaikkien kaikkin kaksi kannalta
+kannattaa kanssa kanssaan kanssamme kanssani kanssanne kanssasi kauan kauemmas kaukana kautta kehen keiden keihin
+keiksi keille keillä keiltä keinä keissä keistä keitten keittä keitä keneen keneksi kenelle kenellä keneltä kenen
+kenenä kenessä kenestä kenet kenettä kennessästä kenties kerran kerta kertaa keskellä kesken keskimäärin ketkä ketä
+kiitos kohti koko kokonaan kolmas kolme kolmen kolmesti koska koskaan kovin kuin kuinka kuinkan kuitenkaan kuitenkin
+kuka kukaan kukin kukka kumpainen kumpainenkaan kumpi kumpikaan kumpikin kun kuten kuuden kuusi kuutta kylliksi kyllä
+kymmenen kyse liian liki lisäksi lisää lla luo luona lähekkäin lähelle lähellä läheltä lähemmäs lähes lähinnä lähtien
+läpi mahdollisimman mahdollista me meidän meidät meihin meille meillä meiltä meissä meistä meitä melkein melko menee
+meneet menemme menen menet menette menevät meni menimme menin menit menivät mennessä mennyt menossa mihin mikin miksi
+mikä mikäli mikään mille milloin milloinkan millä miltä minkä minne minua minulla minulle minulta minun minussa minusta
+minut minuun minä missä mistä miten mitkä mitä mitään moi molemmat mones monesti monet moni moniaalla moniaalle
+moniaalta monta muassa muiden muita muka mukaan mukaansa mukana mutta muu muualla muualle muualta muuanne muulloin
+muun muut muuta muutama muutaman muuten myöhemmin myös myöskin myöskään myötä ne neljä neljän neljää niiden niihin
+niiksi niille niillä niiltä niin niinä niissä niistä niitä noiden noihin noiksi noilla noille noilta noin noina noissa
+noista noita nopeammin nopeasti nopeiten nro nuo nyt näiden näihin näiksi näille näillä näiltä näin näinä näissä
+näissähin näissälle näissältä näissästä näistä näitä nämä ohi oikea oikealla oikein ole olemme olen olet olette oleva
+olevan olevat oli olimme olin olisi olisimme olisin olisit olisitte olisivat olit olitte olivat olla olleet olli ollut
+oma omaa omaan omaksi omalle omalta oman omassa omat omia omien omiin omiksi omille omilta omissa omista on onkin onko
+ovat paikoittain paitsi pakosti paljon paremmin parempi parhaillaan parhaiten perusteella peräti pian pieneen pieneksi
+pienelle pienellä pieneltä pienempi pienestä pieni pienin poikki puolesta puolestaan päälle runsaasti saakka sadam sama
+samaa samaan samalla samallalta samallassa samallasta saman samat samoin sata sataa satojen se seitsemän sekä sen
+seuraavat siellä sieltä siihen siinä siis siitä sijaan siksi sille silloin sillä silti siltä sinne sinua sinulla
+sinulle sinulta sinun sinussa sinusta sinut sinuun sinä sisäkkäin sisällä siten sitten sitä ssa sta suoraan suuntaan
+suuren suuret suuri suuria suurin suurten taa taas taemmas tahansa tai takaa takaisin takana takia tallä tapauksessa
+tarpeeksi tavalla tavoitteena te teidän teidät teihin teille teillä teiltä teissä teistä teitä tietysti todella toinen
+toisaalla toisaalle toisaalta toiseen toiseksi toisella toiselle toiselta toisemme toisen toisensa toisessa toisesta
+toista toistaiseksi toki tosin tuhannen tuhat tule tulee tulemme tulen tulet tulette tulevat tulimme tulin tulisi
+tulisimme tulisin tulisit tulisitte tulisivat tulit tulitte tulivat tulla tulleet tullut tuntuu tuo tuohon tuoksi
+tuolla tuolle tuolloin tuolta tuon tuona tuonne tuossa tuosta tuota tuotä tuskin tykö tähän täksi tälle tällä tällöin
+tältä tämä tämän tänne tänä tänään tässä tästä täten tätä täysin täytyvät täytyy täällä täältä ulkopuolella usea
+useasti useimmiten usein useita uudeksi uudelleen uuden uudet uusi uusia uusien uusinta uuteen uutta vaan vahemmän vai
+vaiheessa vaikea vaikean vaikeat vaikeilla vaikeille vaikeilta vaikeissa vaikeista vaikka vain varmasti varsin varsinkin
+varten vasen vasenmalla vasta vastaan vastakkain vastan verran vielä vierekkäin vieressä vieri viiden viime viimeinen
+viimeisen viimeksi viisi voi voidaan voimme voin voisi voit voitte voivat vuoden vuoksi vuosi vuosien vuosina vuotta
+vähemmän vähintään vähiten vähän välillä yhdeksän yhden yhdessä yhteen yhteensä yhteydessä yhteyteen yhtä yhtäälle
+yhtäällä yhtäältä yhtään yhä yksi yksin yksittäin yleensä ylemmäs yli ylös ympäri älköön älä
+"""
+
+def plain_stopwords(json):
+    data = json.load(open(json))
+    return ' '.join(data)
+
+LANGUAGES = {
+    "english": 'languages/stopwords-en',
+    "german": 'languages/stopwords-de',
+    "spanish": 'languages/stopwords-es',
+    "french": 'languages/stopwords-fr',
+    "italian": 'languages/stopwords-it',
+    "portuguese": 'languages/stopwords-pt',
+    "russian": 'languages/stopwords-ru',
+    "danish": 'languages/stopwords-da',
+    "dutch": 'languages/stopwords-nl',
+    "finnish": 'languages/stopwords-fi',
+    "norwegian": 'languages/stopwords-no',
+    "hungarian": 'languages/stopwords-hu',
+    "romanian": 'languages/stopwords-ro',
+    "swedish": 'languages/stopwords-sv',
+}
+
 
 def get_stopwords_by_language(language):
+    language = language.lower()
     if language in LANGUAGES:
-        return LANGUAGES[language]
-    return LANGUAGES["english"]
+        return plain_stopwords(LANGUAGES[language]) #LANGUAGES[language]
+    return plain_stopwords(LANGUAGES["english"]) #LANGUAGES["english"]
