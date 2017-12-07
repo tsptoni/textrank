@@ -220,6 +220,7 @@ LANGUAGES = {
     "hungarian": 'stopwords-hu.json',
     "romanian": 'stopwords-ro.json',
     "swedish": 'stopwords-sv.json',
+    "albanian": 'stopwords-sq.json',
 }
 
 
