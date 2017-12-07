@@ -21,6 +21,7 @@ There is also a demo function: `snowball.demo()`.
 from __future__ import unicode_literals, print_function
 
 from .porter import PorterStemmer
+from textrank3.supported_languages import LANGUAGES
 
 
 class SnowballStemmer():
@@ -70,9 +71,7 @@ class SnowballStemmer():
                            language, a ValueError is raised.
     """
 
-    languages = ("danish", "dutch", "english", "finnish", "french", "german",
-                 "hungarian", "italian", "norwegian", "porter", "portuguese",
-                 "romanian", "russian", "spanish", "swedish", "albanian")
+    languages = LANGUAGES
 
     def __init__(self, language):
         if language not in self.languages:
